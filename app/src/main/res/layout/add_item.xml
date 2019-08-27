@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageViewItem"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:src="@mipmap/add_photo"/>
     <EditText
         android:id="@+id/edtName"

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@mipmap/plus" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +22,6 @@
 
         <ListView
             android:id="@+id/shoppingListView"
-            android:layout_above="@+id/btnBuy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -31,7 +30,7 @@
         <Button
             android:id="@+id/btnBuy"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_alignParentBottom="true"
             android:text="Buy" />

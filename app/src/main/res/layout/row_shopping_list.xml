@@ -27,8 +27,9 @@
 
         <ImageView
             android:id="@+id/imgIcon"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_marginRight="20sp"
             android:src="@mipmap/ic_launcher" />
         <LinearLayout

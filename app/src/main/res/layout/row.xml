@@ -18,8 +18,9 @@
 
         <ImageView
             android:id="@+id/imgIcon"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
             android:layout_marginRight="20sp"
             android:src="@mipmap/ic_launcher" />
         <LinearLayout
