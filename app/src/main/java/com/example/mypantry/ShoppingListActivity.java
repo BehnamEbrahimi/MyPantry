@@ -69,11 +69,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
             //add to list
-            boolean _isBought = false;
-            if (isBought == 1) {
-                _isBought = true;
-            }
-            shoppingList.add(new Model(id, name, price, quantityInPantry, _isBought, quantityToBuy, location, image));
+            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
         }
         shoppingAdapter.notifyDataSetChanged();
         if (shoppingList.size() == 0) {
@@ -291,11 +287,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
 
-            boolean _isBought = false;
-            if (isBought == 1) {
-                _isBought = true;
-            }
-            shoppingList.add(new Model(id, name, price, quantityInPantry, _isBought, quantityToBuy, location, image));
+            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
         }
         shoppingAdapter.notifyDataSetChanged();
     }

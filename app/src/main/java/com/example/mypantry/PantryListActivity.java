@@ -1,5 +1,5 @@
 package com.example.mypantry;
- 
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -67,11 +67,7 @@ public class PantryListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
             //add to list
-            boolean _isBought = false;
-            if (isBought == 1) {
-                _isBought = true;
-            }
-            pantryList.add(new Model(id, name, price, quantityInPantry, _isBought, quantityToBuy, location, image));
+            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
         }
         pantryAdapter.notifyDataSetChanged();
         if (pantryList.size() == 0) {
@@ -288,11 +284,7 @@ public class PantryListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
 
-            boolean _isBought = false;
-            if (isBought == 1) {
-                _isBought = true;
-            }
-            pantryList.add(new Model(id, name, price, quantityInPantry, _isBought, quantityToBuy, location, image));
+            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
         }
         pantryAdapter.notifyDataSetChanged();
     }

@@ -5,12 +5,12 @@ public class Model {
     private String name;
     private double price;
     private double quantityInPantry;
-    private boolean isBought;
+    private long isBought;
     private double quantityToBuy;
     private String location;
     private byte[] image;
 
-    public Model(int id, String name, double price, double quantityInPantry, boolean isBought, double quantityToBuy, String location, byte[] image) {
+    public Model(int id, String name, double price, double quantityInPantry, long isBought, double quantityToBuy, String location, byte[] image) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -53,11 +53,11 @@ public class Model {
         this.quantityInPantry = quantityInPantry;
     }
 
-    public boolean getIsBought() {
+    public long getIsBought() {
         return isBought;
     }
 
-    public void setIsBought(boolean isBought) {
+    public void setIsBought(long isBought) {
         this.isBought = isBought;
     }
 
