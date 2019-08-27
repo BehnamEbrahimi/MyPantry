@@ -12,30 +12,62 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:src="@mipmap/add_photo"/>
-    <EditText
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            />
+        <EditText
         android:id="@+id/edtName"
-        android:hint="Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: "
+            />
     <EditText
         android:id="@+id/edtPrice"
-        android:hint="Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: "
+                />
     <EditText
         android:id="@+id/edtLocation"
-        android:hint="Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity: "
+                    />
     <EditText
         android:id="@+id/edtQuantity"
-        android:hint="Quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"/>
+            </LinearLayout>
     <Button
         android:id="@+id/btnAdd"
         style="@style/Base.Widget.AppCompat.Button.Colored"

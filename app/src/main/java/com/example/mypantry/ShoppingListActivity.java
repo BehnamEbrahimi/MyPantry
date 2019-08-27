@@ -135,10 +135,41 @@ public class ShoppingListActivity extends AppCompatActivity {
                 for (int i=0; i< shoppingList.size(); i++){
                     Model dataModel = (Model) shoppingList.get(i);
                     if (dataModel.getChecked()){
-                        msg += dataModel.getId() + " ";
+                        //get data of the each row ticked
+                        Cursor cursor = MainActivity.mySQLiteHelper.getData("SELECT * FROM items WHERE id = " + dataModel.getId());
+                        final String[] name = {""};
+                        final double[] price = {0};
+                        final double[] quantityInPantry = {0};
+                        final long[] isBought = {0};
+                        final double[] quantityToBuy = {0};
+                        final String[] location = {""};
+                        final byte[][] image = {"".getBytes()};
+
+                        while (cursor.moveToNext()) {
+                            name[0] = cursor.getString(1);
+                            price[0] = cursor.getDouble(2);
+                            quantityInPantry[0] = cursor.getDouble(3);
+                            isBought[0] = cursor.getLong(4);
+                            quantityToBuy[0] = cursor.getDouble(5);
+                            location[0] = cursor.getString(6);
+                            image[0] = cursor.getBlob(7);
+                        }
+
+                        MainActivity.mySQLiteHelper.updateData(
+                                name[0],
+                                price[0],
+                                quantityInPantry[0] + quantityToBuy[0],
+                                1,
+                                0,
+                                location[0],
+                                image[0],
+                                dataModel.getId()
+                        );
                     }
                 }
-                Toast.makeText(ShoppingListActivity.this, msg, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShoppingListActivity.this, "Items have been added to pantry!", Toast.LENGTH_SHORT).show();
+                updateShoppingList();
+
             }
         });
     }
@@ -154,6 +185,25 @@ public class ShoppingListActivity extends AppCompatActivity {
         final EditText edtLocation = dialog.findViewById(R.id.edtLocation);
         final EditText edtQuantity = dialog.findViewById(R.id.edtQuantity);
         Button btnAdd = dialog.findViewById(R.id.btnAdd);
+
+        edtName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    //check to see if an item with the same name exits
+                    Cursor cursor = MainActivity.mySQLiteHelper.getData("SELECT * FROM items WHERE name = '" + edtName.getText().toString().toLowerCase().trim() + "'");
+                    while (cursor.moveToNext()) {
+                        Double price = cursor.getDouble(2);
+                        String location = cursor.getString(6);
+                        byte[] image = cursor.getBlob(7);
+
+                        edtPrice.setText(price.toString());
+                        edtLocation.setText(location);
+                        imageViewItem.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.length));
+                    }
+                }
+            }
+        });
 
         //set width of dialog
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);

@@ -127,6 +127,25 @@ public class PantryListActivity extends AppCompatActivity {
         final EditText edtQuantity = dialog.findViewById(R.id.edtQuantity);
         Button btnAdd = dialog.findViewById(R.id.btnAdd);
 
+        edtName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    //check to see if an item with the same name exits
+                    Cursor cursor = MainActivity.mySQLiteHelper.getData("SELECT * FROM items WHERE name = '" + edtName.getText().toString().toLowerCase().trim() + "'");
+                    while (cursor.moveToNext()) {
+                        Double price = cursor.getDouble(2);
+                        String location = cursor.getString(6);
+                        byte[] image = cursor.getBlob(7);
+
+                        edtPrice.setText(price.toString());
+                        edtLocation.setText(location);
+                        imageViewItem.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.length));
+                    }
+                }
+            }
+        });
+
         //set width of dialog
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);
         //set height of dialog
