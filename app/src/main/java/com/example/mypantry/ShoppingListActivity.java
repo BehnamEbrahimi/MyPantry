@@ -33,6 +33,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     ListView shoppingListView;
     ArrayList<Model> shoppingList;
     ShoppingListAdapter shoppingAdapter = null;
+    Button btnBuy;
 
     ImageView imageViewItem;
 
@@ -55,6 +56,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         shoppingList = new ArrayList<>();
         shoppingAdapter = new ShoppingListAdapter(this, R.layout.row_shopping_list, shoppingList);
         shoppingListView.setAdapter(shoppingAdapter);
+        btnBuy = (Button) findViewById(R.id.btnBuy);
 
         //get all data from db
         Cursor cursor = MainActivity.mySQLiteHelper.getData("SELECT * FROM items WHERE (isBought = 0 OR isBought = 2)");
@@ -69,13 +71,24 @@ public class ShoppingListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
             //add to list
-            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
+            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image, false));
         }
         shoppingAdapter.notifyDataSetChanged();
         if (shoppingList.size() == 0) {
             //if there is no record in table of database
             Toast.makeText(this, "No item found!", Toast.LENGTH_SHORT).show();
         }
+
+        shoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+
+                Model model = (Model) shoppingList.get(position);
+                model.setChecked(!model.getChecked());
+                shoppingAdapter.notifyDataSetChanged();
+
+            }
+        });
 
         shoppingListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -112,6 +125,20 @@ public class ShoppingListActivity extends AppCompatActivity {
                 });
                 dialog.show();
                 return true;
+            }
+        });
+
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String msg="";
+                for (int i=0; i< shoppingList.size(); i++){
+                    Model dataModel = (Model) shoppingList.get(i);
+                    if (dataModel.getChecked()){
+                        msg += dataModel.getId() + " ";
+                    }
+                }
+                Toast.makeText(ShoppingListActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -354,7 +381,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
 
-            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
+            shoppingList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image, false));
         }
         shoppingAdapter.notifyDataSetChanged();
     }

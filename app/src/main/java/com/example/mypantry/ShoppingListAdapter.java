@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +43,7 @@ public class ShoppingListAdapter extends BaseAdapter {
     private class ViewHolder{
         ImageView imageView;
         TextView txtName, txtPrice, txtLocation, txtQuantity;
+        CheckBox checkBox;
     }
 
     @Override
@@ -57,6 +59,7 @@ public class ShoppingListAdapter extends BaseAdapter {
             holder.txtLocation = row.findViewById(R.id.txtLocation);
             holder.txtQuantity = row.findViewById(R.id.txtQuantity);
             holder.imageView = row.findViewById(R.id.imgIcon);
+            holder.checkBox = row.findViewById(R.id.checkBox);
             row.setTag(holder);
         }
         else {
@@ -73,6 +76,8 @@ public class ShoppingListAdapter extends BaseAdapter {
         byte[] recordImage = model.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(recordImage, 0, recordImage.length);
         holder.imageView.setImageBitmap(bitmap);
+
+        holder.checkBox.setChecked(model.getChecked());
 
         return row;
     }

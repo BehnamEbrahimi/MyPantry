@@ -67,7 +67,7 @@ public class PantryListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
             //add to list
-            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
+            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image, false));
 
         }
         pantryAdapter.notifyDataSetChanged();
@@ -353,7 +353,7 @@ public class PantryListActivity extends AppCompatActivity {
             String location = cursor.getString(6);
             byte[] image = cursor.getBlob(7);
 
-            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image));
+            pantryList.add(new Model(id, name, price, quantityInPantry, isBought, quantityToBuy, location, image, false));
         }
         pantryAdapter.notifyDataSetChanged();
     }
