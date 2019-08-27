@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new SQLiteHelper(this, "DB.sqlite", null, 1);
 
         //creating table in database
-        mySQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price DOUBLE, quantityInPantry DOUBLE, isBought INT, quantityToBuy DOUBLE, location VARCHAR, image BLOB)");
+        mySQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR UNIQUE, price DOUBLE, quantityInPantry DOUBLE, isBought INT, quantityToBuy DOUBLE, location VARCHAR, image BLOB)");
     }
 
     public void openPantryList(View view){
