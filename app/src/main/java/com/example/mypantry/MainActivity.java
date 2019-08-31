@@ -3,10 +3,11 @@ package com.example.mypantry;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openShoppingList(View view){
         Intent intent = new Intent(MainActivity.this, ShoppingListActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
+
+    public void openMap(View view){
+        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
         MainActivity.this.startActivity(intent);
     }
 

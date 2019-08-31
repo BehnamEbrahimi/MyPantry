@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="openMap"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnPantry"
         android:layout_width="261dp"
         android:layout_height="127dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="60dp"
         android:background="@color/colorAccent"
         android:drawableLeft="@mipmap/pantry"
         android:onClick="openPantryList"
@@ -27,9 +28,9 @@
         android:id="@+id/btnShoppingList"
         android:layout_width="261dp"
         android:layout_height="126dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="224dp"
         android:background="@color/colorAccent"
         android:drawableLeft="@mipmap/list"
         android:onClick="openShoppingList"
@@ -40,4 +41,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btnShops"
+        android:layout_width="261dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="388dp"
+        android:background="@color/colorAccent"
+        android:drawableLeft="@mipmap/shop"
+        android:onClick="openMap"
+        android:padding="30dp"
+        android:text="Shops Nearby"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
