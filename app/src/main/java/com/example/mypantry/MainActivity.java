@@ -11,6 +11,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * Created by Behnam Ebrahimi (SID: 19584267) on 11/09/2019.
+ * Assignment #1
+ * School of Computing, Engineering and Mathematics, Western Sydney University.
+ * MyPantry: is a simple shopping aid Android App. In this app, there is a
+ * shopping list and an inventory of the existing pantry. It has the following features:
+ * 1. Add/View/Edit/Delete a pantry item.
+ * 2. Add/View/Edit/Delete a shopping list item.
+ * 3. Tick off shopping list items and update the pantry.
+ * 4. View and change images that are associated with items.
+ * 5. Store pantry data using an SQLite database.
+ * 6. Update the pantry when shopping.
+ * 7. Good display of shopping lists plus scrolling.
+ * 8. Adding shopping outings to Google Calendar.
+ * 8. Choosing photos from Gallery & associating them with shopping items.
+ * 9. Good documentation, comments, naming, etc.
+ * 10.Showing the nearby supermarkets in Google Maps.
+ **/
+
 public class MainActivity extends AppCompatActivity {
 
     public static SQLiteHelper mySQLiteHelper;
@@ -39,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMap(View view){
         Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
+
+    public void openCalebdar(View view){
+        Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
         MainActivity.this.startActivity(intent);
     }
 
